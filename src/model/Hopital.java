@@ -21,6 +21,10 @@ public class Hopital {
 		return filleAttente;
 	}
 
+	public ArrayList<Salle> getSalles() {
+		return salles;
+	}
+
 	public static Hopital getInstance() {
 		if (instance == null) {
 			instance = new Hopital();

@@ -1,5 +1,7 @@
 package model;
 
+import dao.PatientDAO;
+
 public class Secretaire extends Personnel {
 
 	public Secretaire(String login, String password, String nom, int metier) {
@@ -7,8 +9,11 @@ public class Secretaire extends Personnel {
 	}
 
 	public void ajouterPatientFilleAttente(Patient patient) {
-		// si patient existe pas
-		// ajouter patient base de donnees
+		PatientDAO dao = new PatientDAO();
+		Patient tempPatient = dao.getPatient(patient.getId());
+		if (tempPatient == null) {
+			dao.createPatient(patient);
+		}
 		getHopital().getFilleAttente().add(patient);
 
 	}
