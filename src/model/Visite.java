@@ -1,34 +1,59 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Visite {
 
 	private int id;
-	private Patient patient;
-	private Medecin medecin;
-	private Salle salle;
+	private int idPatient;
+	private String medecin;
+	private int numSalle;
 	private final int tarif = 23;
-	private Date date;
+	private LocalDateTime date;
+
+	public Visite(int id, int idPatient, String medecin, int numSalle, LocalDateTime date) {
+		this.id = id;
+		this.idPatient = idPatient;
+		this.medecin = medecin;
+		this.numSalle = numSalle;
+		this.date = date;
+	}
+
+	public Visite(int idPatient, String medecin, int numSalle, LocalDateTime date) {
+		this.idPatient = idPatient;
+		this.medecin = medecin;
+		this.numSalle = numSalle;
+		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "Visite [id=" + id + ", idPatient=" + idPatient + ", medecin=" + medecin + ", numSalle=" + numSalle
+				+ ", tarif=" + tarif + ", date=" + date + "]";
+	}
+
 	public int getId() {
 		return id;
 	}
-	public Patient getPatient() {
-		return patient;
+
+	public int getIdPatient() {
+		return idPatient;
 	}
-	public Medecin getMedecin() {
+
+	public String getMedecin() {
 		return medecin;
 	}
-	public Salle getSalle() {
-		return salle;
+
+	public int getNumSalle() {
+		return numSalle;
 	}
+
 	public int getTarif() {
 		return tarif;
 	}
-	public Date getDate() {
+
+	public LocalDateTime getDate() {
 		return date;
 	}
 
-	
-	
 }
