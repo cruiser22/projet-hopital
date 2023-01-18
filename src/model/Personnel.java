@@ -22,6 +22,10 @@ public class Personnel {
 		return hopital;
 	}
 
+	public String getNom() {
+		return nom;
+	}
+
 	public LinkedList<Patient> afficherFilleAttente() {
 		return hopital.getFilleAttente();
 	}

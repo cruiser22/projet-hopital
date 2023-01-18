@@ -21,7 +21,6 @@ public class Patient {
 		this.prenom = prenom;
 		this.age = age;
 	}
-	
 
 	public String getAdresse() {
 		return adresse;
@@ -42,8 +41,6 @@ public class Patient {
 	public int getAge() {
 		return age;
 	}
-	
-	
 
 	public String getTelephone() {
 		return telephone;
