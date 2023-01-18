@@ -1,6 +1,9 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
+import dao.VisiteDAO;
 
 public class Medecin extends Personnel {
 
@@ -20,6 +23,11 @@ public class Medecin extends Personnel {
 
 	public void sauvegarderVisites() {
 		salle.envoiListesBDD();
+	}
+
+	public ArrayList<Visite> afficherListesVisite() {
+		VisiteDAO dao = new VisiteDAO();
+		return dao.getVisiteByMedecin(getNom());
 	}
 
 }

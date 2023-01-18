@@ -11,7 +11,7 @@ public class Visite {
 	private final int tarif = 23;
 	private LocalDateTime date;
 
-	public Visite(int id, int idPatient, String medecin, int numSalle, LocalDateTime date) {
+	public Visite(int id, int idPatient, String medecin, LocalDateTime date, int numSalle) {
 		this.id = id;
 		this.idPatient = idPatient;
 		this.medecin = medecin;
