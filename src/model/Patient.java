@@ -21,6 +21,33 @@ public class Patient {
 		this.prenom = prenom;
 		this.age = age;
 	}
+	
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public int getAge() {
+		return age;
+	}
+	
+	
+
+	public String getTelephone() {
+		return telephone;
+	}
 
 	public String toString() {
 		return "Patient [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", telephone=" + telephone
