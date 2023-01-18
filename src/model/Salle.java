@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import dao.VisiteDAO;
+
 public class Salle {
 	private int numero;
 	private ArrayList<Visite> visites;
@@ -33,14 +35,16 @@ public class Salle {
 
 	public void ajouterVisite(Visite visite) {
 		if (visites.size() >= nbVisiteMax) {
-			// envoi base de donnees
 			envoiListesBDD();
 		}
 		visites.add(visite);
 	}
 
 	public void envoiListesBDD() {
-		// envoie bdd
+		VisiteDAO dao = new VisiteDAO();
+		for (Visite v : visites) {
+			dao.createVisit(v);
+		}
 		visites.clear();
 	}
 }

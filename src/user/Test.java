@@ -63,6 +63,7 @@ public class Test {
 		m.sauvegarderVisites();
 		System.out.println(s.afficherFilleAttente());
 		System.out.println(h.getSalles().get(0).getVisites());
+		System.out.println(m.afficherListesVisite());
 
 	}
 
