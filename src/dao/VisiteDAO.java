@@ -55,5 +55,20 @@ public class VisiteDAO {
 		}
 		return visites;
 	}
+	
+	public ArrayList<Visite> getVisiteBypatientId(int patientId) {
+		ArrayList<Visite> visites = new ArrayList<Visite>();
+		try {
+			Statement statement = connection.createStatement();
+			ResultSet result = statement.executeQuery("SELECT * FROM visites where idpatient =" +patientId);
+			while (result.next()) {
+				visites.add(new Visite(result.getInt(1), result.getInt(2), result.getString(4),
+						LocalDateTime.parse(result.getString(3)), result.getInt(5)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return visites;
+	}
 
 }
