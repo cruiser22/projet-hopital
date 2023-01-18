@@ -13,8 +13,8 @@ public class VisiteDAO {
 
 	public VisiteDAO() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital", "root", "root");
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hopital", "root", "root");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
