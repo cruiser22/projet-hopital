@@ -27,4 +27,8 @@ public class Patient {
 				+ ", adresse=" + adresse + "]";
 	}
 
+	public int getId() {
+		return id;
+	}
+
 }
