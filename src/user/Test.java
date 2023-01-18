@@ -1,5 +1,10 @@
 package user;
 
+import model.Hopital;
+import model.Medecin;
+import model.Patient;
+import model.Salle;
+import model.Secretaire;
 import java.util.Scanner;
 
 public class Test {
@@ -9,10 +14,13 @@ public class Test {
 		System.out.println("Init main");
 
 		metierMenu();
+		//testMedecin();
+		//testSecretaire();
+		//testMedecin();
+		//test package
 	}
 
 	private static void metierMenu() {
-		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		int choix = -1;
 		
@@ -179,6 +187,56 @@ public class Test {
 				break;
 			}
 		}
+	}
+
+	static void testSecretaire() {
+		Hopital h = Hopital.getInstance();
+		h.ajouterSalle(new Salle(1));
+		h.ajouterSalle(new Salle(2));
+		Secretaire s = new Secretaire("test", "test", "sylvie", 0);
+		Patient p1 = new Patient(1, "toto", "titi", 15);
+		Patient p2 = new Patient(2, "dupond", "jean", 16);
+		Patient p3 = new Patient(3, "dupont", "jacques", 17);
+		Patient p4 = new Patient(4, "doe", "john", 18);
+		System.out.println(s.afficherFilleAttente());
+		s.ajouterPatientFilleAttente(p1);
+		s.ajouterPatientFilleAttente(p2);
+		System.out.println(s.afficherFilleAttente());
+		System.out.println(s.afficherProchainPatient());
+
+	}
+
+	static void testMedecin() {
+		Hopital h = Hopital.getInstance();
+		h.ajouterSalle(new Salle(1));
+		h.ajouterSalle(new Salle(2));
+
+		Secretaire s = new Secretaire("test", "test", "sylvie", 0);
+
+		Patient p1 = new Patient(1, "toto", "titi", 15);
+		Patient p2 = new Patient(2, "dupond", "jean", 16);
+		Patient p3 = new Patient(3, "dupont", "jacques", 17);
+		Patient p4 = new Patient(4, "doe", "john", 18);
+
+		s.ajouterPatientFilleAttente(p1);
+		s.ajouterPatientFilleAttente(p2);
+		s.ajouterPatientFilleAttente(p3);
+		s.ajouterPatientFilleAttente(p4);
+		// System.out.println(s.afficherFilleAttente());
+
+		Medecin m = new Medecin("test", "test", "rayhan", 1);
+		m.salleDispo();
+		System.out.println(s.afficherFilleAttente());
+		System.out.println(h.getSalles().get(0).getVisites());
+		m.salleDispo();
+		System.out.println(s.afficherFilleAttente());
+		System.out.println(h.getSalles().get(0).getVisites());
+		m.salleDispo();
+		System.out.println(s.afficherFilleAttente());
+		System.out.println(h.getSalles().get(0).getVisites());
+		m.sauvegarderVisites();
+		System.out.println(s.afficherFilleAttente());
+		System.out.println(h.getSalles().get(0).getVisites());
 	}
 
 }
