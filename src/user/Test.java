@@ -212,6 +212,7 @@ public class Test {
 		h.ajouterSalle(new Salle(2));
 
 		Secretaire s = new Secretaire("test", "test", "sylvie", 0);
+		
 
 		Patient p1 = new Patient(1, "toto", "titi", 15);
 		Patient p2 = new Patient(2, "dupond", "jean", 16);
@@ -222,8 +223,12 @@ public class Test {
 		s.ajouterPatientFilleAttente(p2);
 		s.ajouterPatientFilleAttente(p3);
 		s.ajouterPatientFilleAttente(p4);
+		System.out.println("-------------------------");
+		System.out.println(s.afficherListesVisite(1));
+		System.out.println(s.afficherListesVisite(2));
+		System.out.println(s.afficherListesVisite(3));
 		// System.out.println(s.afficherFilleAttente());
-
+		System.out.println("-------------------------");
 		Medecin m = new Medecin("test", "test", "rayhan", 1);
 		m.salleDispo();
 		System.out.println(s.afficherFilleAttente());
@@ -237,6 +242,9 @@ public class Test {
 		m.sauvegarderVisites();
 		System.out.println(s.afficherFilleAttente());
 		System.out.println(h.getSalles().get(0).getVisites());
+
+		System.out.println(m.afficherListesVisite());
+
 	}
 
 }

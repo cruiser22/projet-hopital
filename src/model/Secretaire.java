@@ -1,6 +1,9 @@
 package model;
 
+import java.util.ArrayList;
+
 import dao.PatientDAO;
+import dao.VisiteDAO;
 
 public class Secretaire extends Personnel {
 
@@ -20,6 +23,11 @@ public class Secretaire extends Personnel {
 
 	public Patient afficherProchainPatient() {
 		return getHopital().getFilleAttente().getFirst();
+	}
+
+	public ArrayList<Visite> afficherListesVisite(int patientId) {
+		VisiteDAO dao = new VisiteDAO();
+		return dao.getVisiteBypatientId(patientId);
 	}
 
 }
