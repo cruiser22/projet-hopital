@@ -1,6 +1,12 @@
 package model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import dao.PatientDAO;
 import dao.VisiteDAO;
@@ -18,7 +24,7 @@ public class Secretaire extends Personnel {
 			dao.createPatient(patient);
 		}
 		getHopital().getFilleAttente().add(patient);
-
+		FichierDate(patient);
 	}
 
 	public Patient afficherProchainPatient() {
@@ -29,5 +35,18 @@ public class Secretaire extends Personnel {
 		VisiteDAO dao = new VisiteDAO();
 		return dao.getVisiteBypatientId(patientId);
 	}
-
+	
+	public void FichierDate(Patient patient) {
+	    try {
+	        FileWriter fw = new FileWriter("patients_heure_arrive.txt", true);
+	        BufferedWriter bw = new BufferedWriter(fw);
+	        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	        Date date = new Date();
+	        bw.write("Patient : " + patient.getNom() + " " + patient.getPrenom() + " arrivé a " + dateFormat.format(date));
+	        bw.newLine();
+	        bw.close();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	}
 }

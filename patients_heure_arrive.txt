@@ -1,0 +1,9 @@
+Patient : toto titi arrivé a 2023/01/19 10:32:09
+Patient : dupond jean arrivé a 2023/01/19 10:32:09
+Patient : dupont jacques arrivé a 2023/01/19 10:32:09
+Patient : doe john arrivé a 2023/01/19 10:32:09
+Patient : delajungle georges arrivé a 2023/01/19 10:32:50
+Patient : toto titi arrivé a 2023/01/19 10:34:17
+Patient : dupond jean arrivé a 2023/01/19 10:34:17
+Patient : dupont jacques arrivé a 2023/01/19 10:34:17
+Patient : doe john arrivé a 2023/01/19 10:34:17
