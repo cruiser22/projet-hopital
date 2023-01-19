@@ -11,7 +11,10 @@ public class Visite {
 	private final int tarif = 23;
 	private LocalDateTime date;
 
-	public Visite(int id, int idPatient, String medecin, int numSalle, LocalDateTime date) {
+
+
+	public Visite(int id, int idPatient, String medecin, LocalDateTime date, int numSalle) {
+
 		this.id = id;
 		this.idPatient = idPatient;
 		this.medecin = medecin;
@@ -30,6 +33,8 @@ public class Visite {
 	public String toString() {
 		return "Visite [id=" + id + ", idPatient=" + idPatient + ", medecin=" + medecin + ", numSalle=" + numSalle
 				+ ", tarif=" + tarif + ", date=" + date + "]";
+
+
 	}
 
 	public int getId() {
@@ -54,6 +59,9 @@ public class Visite {
 
 	public LocalDateTime getDate() {
 		return date;
+
 	}
 
 }
+	
+	
