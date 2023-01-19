@@ -244,14 +244,14 @@ public class Test {
 				a.creerPatient(formulairePatient(false));
 				break;
 			case 4:
-				Personnel m = formulairePersonnel();
+				Personnel m = formulairePersonnel(-2);
 				a.creerMedecin(new Medecin(m.getLogin(), m.getPassword(), m.getNom(), m.getMetier()));
 				break;
 			case 5:
 				a.supprimerMedecin(personneLogin("médecin"));
 				break;
 			case 6:
-				Personnel s = formulairePersonnel();
+				Personnel s = formulairePersonnel(0);
 				a.creerSecretaire(new Secretaire(s.getLogin(), s.getPassword(), s.getNom(), s.getMetier()));
 				break;
 			case 7:
@@ -292,15 +292,15 @@ public class Test {
 		return login;
 	}
 
-	private static Personnel formulairePersonnel() {
+	private static Personnel formulairePersonnel(int typePersonnel) {
 		Scanner scInt = new Scanner(System.in);
 		Scanner scString = new Scanner(System.in);
 		Personnel p = null;
-		int metier;
 		String login, password, tel;
+		int metier = typePersonnel;
 
 		do {
-			System.out.println("Veuillez renseigner les informations du patient :");
+			System.out.println("Veuillez renseigner les informations du personnel :");
 			try {
 				System.out.println("Login");
 				login = scString.nextLine();
@@ -308,8 +308,12 @@ public class Test {
 				password = scString.nextLine();
 				System.out.println("Nom");
 				tel = scString.nextLine();
-				System.out.println("Métier");
-				metier = scInt.nextInt();
+				if (metier != 0) {
+					while (metier != 1 && metier != 2) {
+						System.out.println("Salle : 1 ou 2");
+						metier = scInt.nextInt();
+					}
+				}
 
 				p = new Personnel(login, password, tel, metier);
 			} catch (Exception e) {
