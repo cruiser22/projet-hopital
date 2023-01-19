@@ -229,10 +229,10 @@ public class Test {
 				break;
 			case 4:
 				Personnel m = formulairePersonnel();
-				a.creerMedecin(new Medecin(p.getLogin(), p.getPassword(), p.getNom(), p.getMetier()));
+				a.creerMedecin(new Medecin(m.getLogin(), m.getPassword(), m.getNom(), m.getMetier()));
 				break;
 			case 5:
-				a.supprimerMedecin(personneId("médecin"));
+				a.supprimerMedecin(personneLogin("médecin"));
 			case 6:
 				Personnel s = formulairePersonnel();
 				a.creerSecretaire(new Secretaire(s.getLogin(), s.getPassword(), s.getNom(), s.getMetier()));
@@ -258,6 +258,20 @@ public class Test {
 		}
 
 		return id;
+	}
+
+	private static String personneLogin(String cible) {
+		Scanner sc = new Scanner(System.in);
+		String login = null;
+
+		System.out.println("Veuillez entrer le login du " + cible + " :");
+		try {
+			login = sc.nextLine();
+		} catch (Exception e) {
+			System.out.println("Veuillez entrer un caratère ASCII !");
+		}
+
+		return login;
 	}
 
 	private static Personnel formulairePersonnel() {

@@ -64,6 +64,21 @@ public class AuthentificationDAO {
 		}
 	}
 
+	public Medecin getMedecin(String login) {
+		Medecin medecin = null;
+		try {
+			PreparedStatement statement = connection.prepareStatement("SELECT * FROM authentification WHERE login = ?");
+			statement.setString(1, login);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				medecin = new Medecin(result.getString(1), result.getString(2), result.getString(3), result.getInt(4));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return medecin;
+	}
+
 	public void createSecretaire(Secretaire secretaire) {
 		try {
 			PreparedStatement statement = connection.prepareStatement("INSERT INTO authentification VALUES (?,?,?,?)");

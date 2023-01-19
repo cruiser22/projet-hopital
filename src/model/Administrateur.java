@@ -12,7 +12,7 @@ public class Administrateur extends Personnel {
 
 	public void supprimerPatient(int id) {
 		PatientDAO dao = new PatientDAO();
-		// dao.supprimerPatient(id);
+		dao.deletePatient(id);
 	}
 
 	public void modifierPatient(int idPatient, Patient patient) {
@@ -27,14 +27,14 @@ public class Administrateur extends Personnel {
 
 	public void creerMedecin(Medecin medecin) {
 		AuthentificationDAO dao = new AuthentificationDAO();
-		// if (dao.existeMedecin() != null) {
-		// dao.creerMedecin(medecin)
-		// }
+		if (dao.getMedecin(medecin.getLogin()) == null) {
+			dao.createMedecin(medecin);
+		}
 	}
 
-	public void supprimerMedecin(int id) {
+	public void supprimerMedecin(String login) {
 		AuthentificationDAO dao = new AuthentificationDAO();
-		// dao.supprimerMedecin(id);
+		dao.deleteMedecin(login);
 	}
 
 	public void creerSecretaire(Secretaire secretaire) {
