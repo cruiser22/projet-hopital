@@ -114,7 +114,7 @@ public class Test {
 				s.ajouterPatientFilleAttente(formulairePatient());
 				break;
 			case 2:
-				System.out.println(s.afficherFilleAttente());
+				System.out.println(s.getFileAttente());
 				break;
 			case 3:
 				System.out.println(s.afficherProchainPatient());
@@ -122,8 +122,8 @@ public class Test {
 			case 4:
 				System.out.println("Veuillez entrer l'ID du patient :");
 				int idPatient = sc.nextInt();
-				if (s.afficherListesVisite(idPatient).size() != 0)
-					System.out.println(s.afficherListesVisite(idPatient));
+				if (s.getListeVisites(idPatient).size() != 0)
+					System.out.println(s.getListeVisites(idPatient));
 				else
 					System.out.println("Patient sans visites ou mauvais ID !");
 				break;
@@ -189,14 +189,14 @@ public class Test {
 				m.salleDispo();
 				break;
 			case 2:
-				System.out.println(m.afficherFilleAttente());
+				System.out.println(m.getFileAttente());
 				break;
 			case 3:
 				m.sauvegarderVisites();
 				break;
 			case 4:
-				if (m.afficherListesVisite().size() != 0)
-					System.out.println(m.afficherListesVisite());
+				if (m.getListeVisites().size() != 0)
+					System.out.println(m.getListeVisites());
 				else
 					System.out.println("Médecin sans visites !");
 				break;
