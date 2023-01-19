@@ -17,15 +17,17 @@ public class Medecin extends Personnel {
 	}
 
 	public void salleDispo() {
-		patient = this.afficherFilleAttente().pop();
-		salle.ajouterVisite(new Visite(patient.getId(), getNom(), salle.getNumero(), LocalDateTime.now()));
+		if (this.getFileAttente().size() > 0) {
+			patient = this.getFileAttente().pop();
+			salle.ajouterVisite(new Visite(patient.getId(), getNom(), salle.getNumero(), LocalDateTime.now()));
+		}
 	}
 
 	public void sauvegarderVisites() {
 		salle.envoiListesBDD();
 	}
 
-	public ArrayList<Visite> afficherListesVisite() {
+	public ArrayList<Visite> getListeVisites() {
 		VisiteDAO dao = new VisiteDAO();
 		return dao.getVisiteByMedecin(getNom());
 	}

@@ -17,15 +17,15 @@ public class Secretaire extends Personnel {
 		if (tempPatient == null) {
 			dao.createPatient(patient);
 		}
-		getHopital().getFilleAttente().add(patient);
+		getHopital().getFileAttente().add(patient);
 
 	}
 
 	public Patient afficherProchainPatient() {
-		return getHopital().getFilleAttente().getFirst();
+		return getHopital().getFileAttente().getFirst();
 	}
 
-	public ArrayList<Visite> afficherListesVisite(int patientId) {
+	public ArrayList<Visite> getListeVisites(int patientId) {
 		VisiteDAO dao = new VisiteDAO();
 		return dao.getVisiteBypatientId(patientId);
 	}
