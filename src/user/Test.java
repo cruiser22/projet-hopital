@@ -32,30 +32,7 @@ public class Test {
 		s.ajouterPatientFilleAttente(p4);
 
 		authMenu();
-		// testMedecin();
-		// testSecretaire();
-		// testMedecin();
-		// test package
 	}
-
-	/*
-	 * private static void metierMenu() { Scanner sc = new Scanner(System.in);
-	 * int choix = -1;
-	 * 
-	 * // Récupérer n°métier du personnel while (choix != 0) {
-	 * System.out.println("Veuillez choisir sous quel métier s'authentifier :");
-	 * System.out.println("1) Médecin en Salle 1\n" + "2) Médecin en Salle 2\n"
-	 * + "3) Secrétaire\n" + "0) Quitter le menu"); try { choix = sc.nextInt();
-	 * } catch (Exception e) { System.out.println(
-	 * "Veuillez entrer un caratère numérique !"); break; }
-	 * 
-	 * if (choix == 0) System.out.println("Merci de votre visite, au revoir !");
-	 * else if (1 <= choix && choix <= 3) authMenu(choix); else
-	 * System.out.println(
-	 * "Veuillez entrer un chiffre correspondant à votre choix !"); }
-	 * 
-	 * }
-	 */
 
 	// menu authentification
 	private static void authMenu() {
@@ -205,61 +182,6 @@ public class Test {
 				break;
 			}
 		}
-	}
-
-	static void testSecretaire() {
-		Hopital h = Hopital.getInstance();
-		h.ajouterSalle(new Salle(1));
-		h.ajouterSalle(new Salle(2));
-		Secretaire s = new Secretaire("test", "test", "sylvie", 0);
-		Patient p1 = new Patient(1, "toto", "titi", 15);
-		Patient p2 = new Patient(2, "dupond", "jean", 16);
-		Patient p3 = new Patient(3, "dupont", "jacques", 17);
-		Patient p4 = new Patient(4, "doe", "john", 18);
-		System.out.println(s.getFileAttente());
-		s.ajouterPatientFilleAttente(p1);
-		s.ajouterPatientFilleAttente(p2);
-		System.out.println(s.getFileAttente());
-		System.out.println(s.afficherProchainPatient());
-
-	}
-
-	static void testMedecin() {
-		Hopital h = Hopital.getInstance();
-		h.ajouterSalle(new Salle(1));
-		h.ajouterSalle(new Salle(2));
-
-		Secretaire s = new Secretaire("test", "test", "sylvie", 0);
-
-		Patient p1 = new Patient(1, "toto", "titi", 15);
-		Patient p2 = new Patient(2, "dupond", "jean", 16);
-		Patient p3 = new Patient(3, "dupont", "jacques", 17);
-		Patient p4 = new Patient(4, "doe", "john", 18);
-
-		s.ajouterPatientFilleAttente(p1);
-		s.ajouterPatientFilleAttente(p2);
-		s.ajouterPatientFilleAttente(p3);
-		s.ajouterPatientFilleAttente(p4);
-		System.out.println("-------------------------");
-		System.out.println(s.getListeVisites(1));
-		System.out.println(s.getListeVisites(2));
-		System.out.println(s.getListeVisites(3));
-		// System.out.println(s.afficherFilleAttente());
-		System.out.println("-------------------------");
-		Medecin m = new Medecin("test", "test", "rayhan", 1);
-		m.salleDispo();
-		System.out.println(s.getFileAttente());
-		System.out.println(h.getSalles().get(0).getVisites());
-		m.salleDispo();
-		System.out.println(s.getFileAttente());
-		System.out.println(h.getSalles().get(0).getVisites());
-		m.salleDispo();
-		System.out.println(s.getFileAttente());
-		System.out.println(h.getSalles().get(0).getVisites());
-		m.sauvegarderVisites();
-		System.out.println(s.getFileAttente());
-		System.out.println(h.getSalles().get(0).getVisites());
-
 	}
 
 }
