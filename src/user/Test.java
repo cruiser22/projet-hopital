@@ -1,30 +1,50 @@
 package user;
 
+import java.util.Scanner;
+
+import dao.AuthentificationDAO;
 import model.Hopital;
 import model.Medecin;
 import model.Patient;
+import model.Personnel;
 import model.Salle;
 import model.Secretaire;
-import java.util.Scanner;
 
 public class Test {
 
 	public static void main(String[] args) {
-		
-		System.out.println("Init main");
 
-		metierMenu();
+		Hopital h = Hopital.getInstance();
+		h.ajouterSalle(new Salle(1));
+		h.ajouterSalle(new Salle(2));
+		
+		
+		//TESTS FILE D'ATTENTE
+		Secretaire s = new Secretaire("test", "test", "sylvie", 0);
+		
+		Patient p1 = new Patient(1, "toto", "titi", 15);
+		Patient p2 = new Patient(2, "dupond", "jean", 16);
+		Patient p3 = new Patient(3, "dupont", "jacques", 17);
+		Patient p4 = new Patient(4, "doe", "john", 18);
+
+		s.ajouterPatientFilleAttente(p1);
+		s.ajouterPatientFilleAttente(p2);
+		s.ajouterPatientFilleAttente(p3);
+		s.ajouterPatientFilleAttente(p4);
+		
+		
+		authMenu();
 		//testMedecin();
 		//testSecretaire();
 		//testMedecin();
 		//test package
 	}
 
-	private static void metierMenu() {
+	/*private static void metierMenu() {
 		Scanner sc = new Scanner(System.in);
 		int choix = -1;
 		
-		// menu Secrétaire/Médecin
+		// Récupérer n°métier du personnel
 		while (choix != 0) {
 			System.out.println("Veuillez choisir sous quel métier s'authentifier :");
 			System.out.println("1) Médecin en Salle 1\n"
@@ -40,43 +60,48 @@ public class Test {
 			
 			if (choix == 0)
 				System.out.println("Merci de votre visite, au revoir !");
-			else if (choix == 1 || choix == 2)
+			else if (1 <= choix && choix <= 3)
 				authMenu(choix);
 			else
 				System.out.println("Veuillez entrer un chiffre correspondant à votre choix !");
 		}
 			
-	}
+	}*/
 	
 	// menu authentification
-	private static void authMenu(int choix) {
+	private static void authMenu() {
+		AuthentificationDAO auth = new AuthentificationDAO();
 		Scanner sc = new Scanner(System.in);
-		Authentification auth  = new Authentification();
-		String login;
-		String password;
-		int continuer = 0;
+		String login = "";
+		String password = "";
+		Personnel p;
+		int metier;
 		
-		try {
-			System.out.println("Veuillez saisir votre nom :");
-			login = sc.nextLine();
-			System.out.println("Veuillez saisir votre mot de passe :");
-			password = sc.nextLine();
-		} catch (Exception e) {
-			System.out.println("Veuillez entrer des charactères ASCII !");
-		}
-		if (auth.verification(choix, login, password)) {
-			System.out.println("Authentification a réussie !");
-			//Prochain menu
-			if (choix == 3)
-				menuSecretaire();
-			else
-				menuMedecin(choix);
-		} else
-			System.out.println("L'authentification a échouée.");
+		do {
+			try {
+				System.out.println("Veuillez saisir votre login :");
+				login = sc.nextLine();
+				System.out.println("Veuillez saisir votre mot de passe :");
+				password = sc.nextLine();
+			} catch (Exception e) {
+				System.out.println("Veuillez entrer des charactères ASCII !");
+			}
+			p = auth.verif(login, password);
+			if (p != null) {
+				System.out.println("Authentification a réussie !");
+				//Prochain menu
+				metier = p.getMetier();
+				if (metier == 0)
+					menuSecretaire(p);
+				else
+					menuMedecin(p);
+			} else
+				System.out.println("L'authentification a échouée.");
+		} while(true);
 	}
 	
-	private static void menuSecretaire() {
-		Secretaire s = new Secretaire();
+	private static void menuSecretaire(Personnel p) {
+		Secretaire s = new Secretaire(p.getLogin(), p.getPassword(), p.getNom(), p.getMetier());
 		Scanner sc = new Scanner(System.in);
 		int choix = -1;
 		
@@ -99,16 +124,21 @@ public class Test {
 				System.out.println("Retour au menu précédent.");
 				break;
 			case 1 :
-				s.addFileAttente(formulairePatient());
+				s.ajouterPatientFilleAttente(formulairePatient());
 				break;
 			case 2 :
-				s.afficherFileAttente();
+				System.out.println(s.afficherFilleAttente());
 				break;
 			case 3 :
-				s.afficherNextPatient();
+				System.out.println(s.afficherProchainPatient());
 				break;
 			case 4 :
-				s.afficherVisitesPatient();
+				System.out.println("Veuillez entrer l'ID du patient :");
+				int idPatient = sc.nextInt();
+				if (s.afficherListesVisite(idPatient).size() != 0)
+					System.out.println(s.afficherListesVisite(idPatient));
+				else
+					System.out.println("Patient sans visites ou mauvais ID !");
 				break;
 			default :
 				System.out.println("Veuillez entrer un chiffre correspondant à votre choix !");
@@ -118,8 +148,9 @@ public class Test {
 	}
 	
 	private static Patient formulairePatient() {
-		Scanner sc = new Scanner(System.in);
-		Patient p;
+		Scanner scInt = new Scanner(System.in);
+		Scanner scString = new Scanner(System.in);
+		Patient p = null;
 		int id, age;
 		String nom, prenom, tel, adresse;
 		
@@ -127,29 +158,29 @@ public class Test {
 			System.out.println("Veuillez renseigner les informations du patient :");
 			try {
 				System.out.println("Id");
-				id = sc.nextInt();
+				id = scInt.nextInt();
 				System.out.println("Nom");
-				nom = sc.nextLine();
+				nom = scString.nextLine();
 				System.out.println("Prenom");
-				prenom = sc.nextLine();
+				prenom = scString.nextLine();
 				System.out.println("Age");
-				age = sc.nextInt();
+				age = scInt.nextInt();
 				System.out.println("Telephone");
-				tel = sc.nextLine();
+				tel = scString.nextLine();
 				System.out.println("Adresse");
-				adresse = sc.nextLine();
+				adresse = scString.nextLine();
 				p = new Patient(id, nom, prenom, age, tel, adresse);
 			} catch (Exception e) {
 				System.out.println("Veuillez entrer un caratère numérique ou ASCII !");
 				break;
 			}
-		} while(p != null);
+		} while(p == null);
 		
 		return p;
 	}
 	
-	private static void menuMedecin(int salle) {
-		Medecin m = new Medecin();
+	private static void menuMedecin(Personnel p) {
+		Medecin m = new Medecin(p.getLogin(), p.getPassword(), p.getNom(), p.getMetier());
 		Scanner sc = new Scanner(System.in);
 		int choix = -1;
 		
@@ -171,16 +202,19 @@ public class Test {
 				System.out.println("Retour au menu précédent.");
 				break;
 			case 1 :
-				m.salleDispo(salle);
+				m.salleDispo();
 				break;
 			case 2 :
-				m.afficherFileAttente();
+				System.out.println(m.afficherFilleAttente());
 				break;
 			case 3 :
 				m.sauvegarderVisites();
 				break;
 			case 4 :
-				m.afficherListeVisites();
+				if (m.afficherListesVisite().size() != 0)
+					System.out.println(m.afficherListesVisite());
+				else
+					System.out.println("Médecin sans visites !");
 				break;
 			default :
 				System.out.println("Veuillez entrer un chiffre correspondant à votre choix !");
