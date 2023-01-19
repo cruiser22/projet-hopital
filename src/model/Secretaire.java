@@ -47,10 +47,12 @@ public class Secretaire extends Personnel {
 		try {
 			FileWriter fw = new FileWriter("patients_heure_arrive.txt", true);
 			BufferedWriter bw = new BufferedWriter(fw);
-			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			DateFormat dateFormatJour = new SimpleDateFormat("dd/MM/yyyy");
+			DateFormat dateFormatHeure = new SimpleDateFormat("HH:mm:ss");
+
 			Date date = new Date();
-			bw.write("Patient : " + patient.getNom() + " " + patient.getPrenom() + " arrivé a "
-					+ dateFormat.format(date));
+			bw.write("Patient : " + patient.getNom() + " " + patient.getPrenom() + " arrivé le "
+					+ dateFormatJour.format(date) + " a " + dateFormatHeure.format(date));
 			bw.newLine();
 			bw.close();
 		} catch (IOException e) {

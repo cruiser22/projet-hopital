@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Visite {
 
@@ -10,8 +11,6 @@ public class Visite {
 	private int numSalle;
 	private final int tarif = 23;
 	private LocalDateTime date;
-
-
 
 	public Visite(int id, int idPatient, String medecin, LocalDateTime date, int numSalle) {
 
@@ -32,8 +31,8 @@ public class Visite {
 	@Override
 	public String toString() {
 		return "Visite [id=" + id + ", idPatient=" + idPatient + ", medecin=" + medecin + ", numSalle=" + numSalle
-				+ ", tarif=" + tarif + ", date=" + date + "]";
-
+				+ ", tarif=" + tarif + ", date=" + date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))
+				+ "]";
 
 	}
 
@@ -63,5 +62,3 @@ public class Visite {
 	}
 
 }
-	
-	

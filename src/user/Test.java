@@ -1,5 +1,6 @@
 package user;
 
+import java.util.List;
 import java.util.Scanner;
 
 import dao.AuthentificationDAO;
@@ -55,6 +56,7 @@ public class Test {
 			p = auth.verif(login, password);
 			if (p != null) {
 				System.out.println("Authentification a réussie !");
+				System.out.println("Bienvenu " + p.getNom());
 				// Prochain menu
 				metier = p.getMetier();
 				if (metier == 0)
@@ -91,7 +93,7 @@ public class Test {
 				s.ajouterPatientFilleAttente(formulairePatient());
 				break;
 			case 2:
-				System.out.println(s.getFileAttente());
+				afficherListe(s.getFileAttente());
 				break;
 			case 3:
 				System.out.println(s.afficherProchainPatient());
@@ -100,7 +102,7 @@ public class Test {
 				System.out.println("Veuillez entrer l'ID du patient :");
 				int idPatient = sc.nextInt();
 				if (s.getListeVisites(idPatient).size() != 0)
-					System.out.println(s.getListeVisites(idPatient));
+					afficherListe(s.getListeVisites(idPatient));
 				else
 					System.out.println("Patient sans visites ou mauvais ID !");
 				break;
@@ -166,14 +168,14 @@ public class Test {
 				m.salleDispo();
 				break;
 			case 2:
-				System.out.println(m.getFileAttente());
+				afficherListe(m.getFileAttente());
 				break;
 			case 3:
 				m.sauvegarderVisites();
 				break;
 			case 4:
 				if (m.getListeVisites().size() != 0)
-					System.out.println(m.getListeVisites());
+					afficherListe(m.getListeVisites());
 				else
 					System.out.println("Médecin sans visites !");
 				break;
@@ -182,6 +184,14 @@ public class Test {
 				break;
 			}
 		}
+	}
+
+	static void afficherListe(List liste) {
+		for (Object o : liste) {
+			System.out.println(o);
+		}
+		System.out.println();
+
 	}
 
 }
