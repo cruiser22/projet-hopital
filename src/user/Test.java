@@ -24,10 +24,10 @@ public class Test {
 		Patient p2 = new Patient(2, "dupond", "jean", 16);
 		Patient p3 = new Patient(3, "dupont", "jacques", 17);
 		Patient p4 = new Patient(4, "doe", "john", 18);
-		System.out.println(s.afficherFilleAttente());
+		System.out.println(s.getFileAttente());
 		s.ajouterPatientFilleAttente(p1);
 		s.ajouterPatientFilleAttente(p2);
-		System.out.println(s.afficherFilleAttente());
+		System.out.println(s.getFileAttente());
 		System.out.println(s.afficherProchainPatient());
 
 	}
@@ -38,7 +38,6 @@ public class Test {
 		h.ajouterSalle(new Salle(2));
 
 		Secretaire s = new Secretaire("test", "test", "sylvie", 0);
-		
 
 		Patient p1 = new Patient(1, "toto", "titi", 15);
 		Patient p2 = new Patient(2, "dupond", "jean", 16);
@@ -50,25 +49,25 @@ public class Test {
 		s.ajouterPatientFilleAttente(p3);
 		s.ajouterPatientFilleAttente(p4);
 		System.out.println("-------------------------");
-		System.out.println(s.afficherListesVisite(1));
-		System.out.println(s.afficherListesVisite(2));
-		System.out.println(s.afficherListesVisite(3));
+		System.out.println(s.getListeVisites(1));
+		System.out.println(s.getListeVisites(2));
+		System.out.println(s.getListeVisites(3));
 		// System.out.println(s.afficherFilleAttente());
 		System.out.println("-------------------------");
 		Medecin m = new Medecin("test", "test", "rayhan", 1);
 		m.salleDispo();
-		System.out.println(s.afficherFilleAttente());
+		System.out.println(s.getFileAttente());
 		System.out.println(h.getSalles().get(0).getVisites());
 		m.salleDispo();
-		System.out.println(s.afficherFilleAttente());
+		System.out.println(s.getFileAttente());
 		System.out.println(h.getSalles().get(0).getVisites());
 		m.salleDispo();
-		System.out.println(s.afficherFilleAttente());
+		System.out.println(s.getFileAttente());
 		System.out.println(h.getSalles().get(0).getVisites());
 		m.sauvegarderVisites();
-		System.out.println(s.afficherFilleAttente());
+		System.out.println(s.getFileAttente());
 		System.out.println(h.getSalles().get(0).getVisites());
-		System.out.println(m.afficherListesVisite());
+		System.out.println(m.getListeVisites());
 
 	}
 
