@@ -56,8 +56,8 @@ public class PatientDAO {
 		return patient;
 	}
 
+	public void updatePatient(int id, Patient patient) {
 
-	public void updatePatient(Patient patient) {
 		try {
 			PreparedStatement statement = connection.prepareStatement(
 					"UPDATE patients SET nom = ?, prenom = ?, age = ?, telephone = ?, adresse = ? WHERE id = ?");
@@ -66,22 +66,22 @@ public class PatientDAO {
 			statement.setInt(3, patient.getAge());
 			statement.setString(4, patient.getTelephone());
 			statement.setString(5, patient.getAdresse());
-			statement.setInt(6, patient.getId());
+			statement.setInt(6, id);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void deletePatient(int id) {
-	    try {
-	        PreparedStatement statement = connection.prepareStatement("DELETE FROM patients WHERE id = ?");
-            statement.setInt(1, id);
-            statement.executeUpdate();
-	    	} catch (SQLException e) {
-	    		e.printStackTrace();
-	    	}
-	    }
+		try {
+			PreparedStatement statement = connection.prepareStatement("DELETE FROM patients WHERE id = ?");
+			statement.setInt(1, id);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public List<Patient> getAllPatients() {
 		List<Patient> patients = new ArrayList<Patient>();

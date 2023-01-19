@@ -93,7 +93,7 @@ public class Test {
 				System.out.println("Retour au menu précédent.");
 				break;
 			case 1:
-				s.ajouterPatientFilleAttente(formulairePatient());
+				s.ajouterPatientFilleAttente(formulairePatient(false));
 				break;
 			case 2:
 				afficherListe(s.getFileAttente());
@@ -115,18 +115,20 @@ public class Test {
 		}
 	}
 
-	private static Patient formulairePatient() {
+	private static Patient formulairePatient(boolean modif) {
 		Scanner scInt = new Scanner(System.in);
 		Scanner scString = new Scanner(System.in);
 		Patient p = null;
-		int id, age;
+		int id = 0, age;
 		String nom, prenom, tel, adresse;
 
 		do {
 			System.out.println("Veuillez renseigner les informations du patient :");
 			try {
-				System.out.println("Id");
-				id = scInt.nextInt();
+				if (!modif) {
+					System.out.println("Id");
+					id = scInt.nextInt();
+				}
 				System.out.println("Nom");
 				nom = scString.nextLine();
 				System.out.println("Prenom");
@@ -220,10 +222,10 @@ public class Test {
 				a.supprimerPatient(personneId("patient"));
 				break;
 			case 2:
-				a.modifierPatient(personneId("patient"), formulairePatient());
+				a.modifierPatient(personneId("patient"), formulairePatient(true));
 				break;
 			case 3:
-				a.creerPatient(formulairePatient());
+				a.creerPatient(formulairePatient(false));
 				break;
 			case 4:
 				Personnel m = formulairePersonnel();
