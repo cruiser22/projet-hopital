@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Patient : toto titi arrivé a 2023/01/19 10:32:09
 Patient : dupond jean arrivé a 2023/01/19 10:32:09
 Patient : dupont jacques arrivé a 2023/01/19 10:32:09
@@ -30,3 +31,13 @@ Patient : dupond jean arrivé a 2023/01/19 11:52:55
 Patient : dupont jacques arrivé a 2023/01/19 11:52:55
 Patient : doe john arrivé a 2023/01/19 11:52:55
 
+=======
+Patient : toto titi arrivé le 19/01/2023 a 14:36:44
+Patient : dupond jean arrivé le 19/01/2023 a 14:36:44
+Patient : dupont jacques arrivé le 19/01/2023 a 14:36:44
+Patient : doe john arrivé le 19/01/2023 a 14:36:44
+Patient : toto titi arrivé le 19/01/2023 a 14:39:35
+Patient : dupond jean arrivé le 19/01/2023 a 14:39:35
+Patient : dupont jacques arrivé le 19/01/2023 a 14:39:35
+Patient : doe john arrivé le 19/01/2023 a 14:39:35
+>>>>>>> 4222a06dd34d073fca48ae1809eb431561da360a

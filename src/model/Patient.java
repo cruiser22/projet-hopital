@@ -47,8 +47,14 @@ public class Patient {
 	}
 
 	public String toString() {
-		return "Patient [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age + ", telephone=" + telephone
-				+ ", adresse=" + adresse + "]";
+		String res = "";
+		res += "Patient [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age;
+		if (telephone != null || telephone == "")
+			res += ", telephone=" + telephone;
+		if (adresse != null || adresse == "")
+			res += ", adresse=" + adresse;
+		res += "]";
+		return res;
 	}
 
 }
