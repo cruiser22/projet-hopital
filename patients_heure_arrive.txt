@@ -1,0 +1,12 @@
+Patient : toto titi arrivé le 19/01/2023 a 14:54:41
+Patient : dupond jean arrivé le 19/01/2023 a 14:54:41
+Patient : dupont jacques arrivé le 19/01/2023 a 14:54:41
+Patient : doe john arrivé le 19/01/2023 a 14:54:41
+Patient : toto titi arrivé le 19/01/2023 a 14:56:06
+Patient : dupond jean arrivé le 19/01/2023 a 14:56:06
+Patient : dupont jacques arrivé le 19/01/2023 a 14:56:06
+Patient : doe john arrivé le 19/01/2023 a 14:56:06
+Patient : toto titi arrivé le 19/01/2023 a 15:01:09
+Patient : dupond jean arrivé le 19/01/2023 a 15:01:09
+Patient : dupont jacques arrivé le 19/01/2023 a 15:01:09
+Patient : doe john arrivé le 19/01/2023 a 15:01:09

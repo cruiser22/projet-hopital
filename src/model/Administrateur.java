@@ -15,14 +15,14 @@ public class Administrateur extends Personnel {
 		// dao.supprimerPatient(id);
 	}
 
-	public void modifierPatient(int id, Patient patientModifie) {
+	public void modifierPatient(int idPatient, Patient patient) {
 		PatientDAO dao = new PatientDAO();
-		// dao.modifierPatient(id, patientModifie);
+		dao.updatePatient(idPatient, patient);
 	}
 
 	public void creerPatient(Patient patient) {
 		PatientDAO dao = new PatientDAO();
-		// dao.creerPatient(patient);
+		dao.createPatient(patient);
 	}
 
 	public void creerMedecin(Medecin medecin) {
