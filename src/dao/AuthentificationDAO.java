@@ -37,4 +37,40 @@ public class AuthentificationDAO {
             }
             return personnel;
         }
+        public void createMedecin(Medecin medecin) {
+            try {
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO medecins (nom, salle) VALUES (?,?)");
+                statement.setString(1, medecin.getNom());
+                statement.setString(2, medecin.getSalle());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void deleteMedecin(int id) {
+            try {
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM medecins WHERE id = ?");
+                statement.setInt(1, id);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        public void createSecretaire(Secretaire secretaire) {
+            try {
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO secretaires (nom) VALUES (?)");
+                statement.setString(1, secretaire.getNom());
+                statement.executeUpdate();
+
+                public void deleteSecretaire(int id) {
+                    try {
+                        PreparedStatement statement = connection.prepareStatement("DELETE FROM secretaires WHERE id = ?");
+                        statement.setInt(1, id);
+                        statement.executeUpdate();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+
         }

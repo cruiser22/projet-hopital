@@ -56,6 +56,7 @@ public class PatientDAO {
 		return patient;
 	}
 
+
 	public void updatePatient(Patient patient) {
 		try {
 			PreparedStatement statement = connection.prepareStatement(
@@ -71,6 +72,16 @@ public class PatientDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void deletePatient(int id) {
+	    try {
+	        PreparedStatement statement = connection.prepareStatement("DELETE FROM patients WHERE id = ?");
+            statement.setInt(1, id);
+            statement.executeUpdate();
+	    	} catch (SQLException e) {
+	    		e.printStackTrace();
+	    	}
+	    }
 
 	public List<Patient> getAllPatients() {
 		List<Patient> patients = new ArrayList<Patient>();
