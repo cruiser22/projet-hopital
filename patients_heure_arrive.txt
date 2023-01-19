@@ -2,3 +2,7 @@ Patient : toto titi arrivé le 19/01/2023 a 14:36:44
 Patient : dupond jean arrivé le 19/01/2023 a 14:36:44
 Patient : dupont jacques arrivé le 19/01/2023 a 14:36:44
 Patient : doe john arrivé le 19/01/2023 a 14:36:44
+Patient : toto titi arrivé le 19/01/2023 a 14:39:35
+Patient : dupond jean arrivé le 19/01/2023 a 14:39:35
+Patient : dupont jacques arrivé le 19/01/2023 a 14:39:35
+Patient : doe john arrivé le 19/01/2023 a 14:39:35

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import dao.AuthentificationDAO;
+import model.Administrateur;
 import model.Hopital;
 import model.Medecin;
 import model.Patient;
@@ -61,6 +62,8 @@ public class Test {
 				metier = p.getMetier();
 				if (metier == 0)
 					menuSecretaire(p);
+				else if (metier == -1)
+					menuAdmin(p);
 				else
 					menuMedecin(p);
 			} else
@@ -99,8 +102,7 @@ public class Test {
 				System.out.println(s.afficherProchainPatient());
 				break;
 			case 4:
-				System.out.println("Veuillez entrer l'ID du patient :");
-				int idPatient = sc.nextInt();
+				int idPatient = personneId("patient");
 				if (s.getListeVisites(idPatient).size() != 0)
 					afficherListe(s.getListeVisites(idPatient));
 				else
@@ -194,4 +196,94 @@ public class Test {
 
 	}
 
+	private static void menuAdmin(Personnel p) {
+		Administrateur a = new Administrateur(p.getLogin(), p.getPassword(), p.getNom(), p.getMetier());
+		Scanner sc = new Scanner(System.in);
+		int choix = -1;
+
+		while (choix != 0) {
+			System.out.println("Veuillez choisir une action :");
+			System.out.println("1) Supprimer un patient\n" + "2) Modifier un patient\n"
+					+ "3) Créer un nouveau patient\n" + "4) Créer un nouveau médecin\n" + "5) Supprimer un médecin\n"
+					+ "6) Créer un nouveau secrétaire\n" + "7) Supprimer un secrétaire\n" + "0) Quitter le menu");
+			try {
+				choix = sc.nextInt();
+			} catch (Exception e) {
+				System.out.println("Veuillez entrer un caratère numérique !");
+			}
+
+			switch (choix) {
+			case 0:
+				System.out.println("Retour au menu précédent.");
+				break;
+			case 1:
+				a.supprimerPatient(personneId("patient"));
+				break;
+			case 2:
+				a.modifierPatient(personneId("patient"), formulairePatient());
+				break;
+			case 3:
+				a.creerPatient(formulairePatient());
+				break;
+			case 4:
+				Personnel m = formulairePersonnel();
+				a.creerMedecin(new Medecin(p.getLogin(), p.getPassword(), p.getNom(), p.getMetier()));
+				break;
+			case 5:
+				a.supprimerMedecin(personneId("médecin"));
+			case 6:
+				Personnel s = formulairePersonnel();
+				a.creerSecretaire(new Secretaire(s.getLogin(), s.getPassword(), s.getNom(), s.getMetier()));
+				break;
+			case 7:
+				a.supprimerSecretaire(personneId("secrétaire"));
+			default:
+				System.out.println("Veuillez entrer un chiffre correspondant à votre choix !");
+				break;
+			}
+		}
+	}
+
+	private static int personneId(String cible) {
+		Scanner sc = new Scanner(System.in);
+		int id = -1;
+
+		System.out.println("Veuillez entrer l'ID du " + cible + " :");
+		try {
+			id = sc.nextInt();
+		} catch (Exception e) {
+			System.out.println("Veuillez entrer un caratère numérique !");
+		}
+
+		return id;
+	}
+
+	private static Personnel formulairePersonnel() {
+		Scanner scInt = new Scanner(System.in);
+		Scanner scString = new Scanner(System.in);
+		Personnel p = null;
+		int metier;
+		String login, password, tel;
+
+		do {
+			System.out.println("Veuillez renseigner les informations du patient :");
+			try {
+				System.out.println("Login");
+				login = scString.nextLine();
+				System.out.println("Password");
+				password = scString.nextLine();
+				System.out.println("Nom");
+				tel = scString.nextLine();
+				System.out.println("Métier");
+				metier = scInt.nextInt();
+
+				p = new Personnel(login, password, tel, metier);
+			} catch (Exception e) {
+				System.out.println("Veuillez entrer un caratère numérique ou ASCII !");
+				break;
+			}
+		} while (p == null);
+
+		return p;
+	}
 }
