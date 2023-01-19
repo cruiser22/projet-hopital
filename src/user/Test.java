@@ -78,9 +78,12 @@ public class Test {
 
 		while (choix != 0) {
 			System.out.println("Veuillez choisir une action :");
-			System.out.println("1) Ajouter un patient en file d'attente\n" + "2) Afficher la file d'attente\n"
-					+ "3) Afficher le prochain patient\n" + "4) Afficher les visites d'un patient\n"
-					+ "0) Quitter le menu");
+			System.out.println("1) Ajouter un patient en file d'attente\n"
+							 + "2) Afficher la file d'attente\n"
+							 + "3) Afficher le prochain patient\n"
+							 + "4) Afficher les visites d'un patient\n"
+							 + "5) Modifier les coordonnées d'un patient\n"							 
+							 + "0) Quitter le menu");
 			try {
 				choix = sc.nextInt();
 			} catch (Exception e) {
@@ -107,6 +110,22 @@ public class Test {
 					afficherListe(s.getListeVisites(idPatient));
 				else
 					System.out.println("Patient sans visites ou mauvais ID !");
+				break;
+			case 5:
+				int idPatient2 = personneId("patient");
+				String tel = "";
+				String adresse = "";
+				System.out.println("Veuillez renseigner les coordonnées du patient :");
+				try {
+					System.out.println("Telephone");
+					tel = sc.nextLine();
+					System.out.println("Adresse");
+					adresse = sc.nextLine();
+				} catch (Exception e) {
+					System.out.println("Veuillez entrer un caratère numérique ou ASCII !");
+					break;
+				}
+				s.modifierPatient(idPatient2, tel, adresse);
 				break;
 			default:
 				System.out.println("Veuillez entrer un chiffre correspondant à votre choix !");

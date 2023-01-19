@@ -54,6 +54,14 @@ public class Patient {
 		return telephone;
 	}
 
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
 	public String toString() {
 		String res = "";
 		res += "Patient [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", age=" + age;
