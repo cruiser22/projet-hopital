@@ -30,6 +30,18 @@ public class Personnel {
 		return hopital.getFileAttente();
 	}
 
+	public String getLogin() {
+		return login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public int getMetier() {
+		return metier;
+	}
+
 	public void sortirMenu() {
 
 	}
