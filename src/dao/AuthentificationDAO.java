@@ -102,4 +102,20 @@ public class AuthentificationDAO {
 		}
 
 	}
+
+	public Secretaire getSecretaire(String login) {
+		Secretaire secretaire = null;
+		try {
+			PreparedStatement statement = connection.prepareStatement("SELECT * FROM authentification WHERE login = ?");
+			statement.setString(1, login);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				secretaire = new Secretaire(result.getString(1), result.getString(2), result.getString(3),
+						result.getInt(4));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return secretaire;
+	}
 }

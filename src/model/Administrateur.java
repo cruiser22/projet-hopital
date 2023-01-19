@@ -39,13 +39,13 @@ public class Administrateur extends Personnel {
 
 	public void creerSecretaire(Secretaire secretaire) {
 		AuthentificationDAO dao = new AuthentificationDAO();
-		// if (dao.existeSecretaire() != null) {
-		// dao.creerMedecin(secretaire)
-		// }
+		if (dao.getSecretaire(secretaire.getLogin()) == null) {
+			dao.createSecretaire(secretaire);
+		}
 	}
 
-	public void supprimerSecretaire(int id) {
+	public void supprimerSecretaire(String login) {
 		AuthentificationDAO dao = new AuthentificationDAO();
-		// dao.supprimerSecretaire(id);
+		dao.deleteSecretaire(login);
 	}
 }

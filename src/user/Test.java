@@ -78,12 +78,9 @@ public class Test {
 
 		while (choix != 0) {
 			System.out.println("Veuillez choisir une action :");
-			System.out.println("1) Ajouter un patient en file d'attente\n"
-							 + "2) Afficher la file d'attente\n"
-							 + "3) Afficher le prochain patient\n"
-							 + "4) Afficher les visites d'un patient\n"
-							 + "5) Modifier les coordonnées d'un patient\n"							 
-							 + "0) Quitter le menu");
+			System.out.println("1) Ajouter un patient en file d'attente\n" + "2) Afficher la file d'attente\n"
+					+ "3) Afficher le prochain patient\n" + "4) Afficher les visites d'un patient\n"
+					+ "5) Modifier les coordonnées d'un patient\n" + "0) Quitter le menu");
 			try {
 				choix = sc.nextInt();
 			} catch (Exception e) {
@@ -252,12 +249,14 @@ public class Test {
 				break;
 			case 5:
 				a.supprimerMedecin(personneLogin("médecin"));
+				break;
 			case 6:
 				Personnel s = formulairePersonnel();
 				a.creerSecretaire(new Secretaire(s.getLogin(), s.getPassword(), s.getNom(), s.getMetier()));
 				break;
 			case 7:
-				a.supprimerSecretaire(personneId("secrétaire"));
+				a.supprimerSecretaire(personneLogin("secrétaire"));
+				break;
 			default:
 				System.out.println("Veuillez entrer un chiffre correspondant à votre choix !");
 				break;
