@@ -35,7 +35,10 @@ public class Secretaire extends Personnel {
 
 	public void modifierPatient(int id, String telephone, String adresse) {
 		PatientDAO dao = new PatientDAO();
-		// dao.modifierPatient(id, telephone, adresse);
+		Patient p = dao.getPatient(id);
+		p.setTelephone(telephone);
+		p.setAdresse(adresse);
+		dao.updatePatient(id, p);
 	}
 
 	public ArrayList<Visite> getListeVisites(int patientId) {
