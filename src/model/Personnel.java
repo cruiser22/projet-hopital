@@ -26,6 +26,18 @@ public class Personnel {
 		return nom;
 	}
 
+	public String getLogin() {
+		return login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public int getMetier() {
+		return metier;
+	}
+
 	public LinkedList<Patient> afficherFilleAttente() {
 		return hopital.getFilleAttente();
 	}
