@@ -1,5 +1,6 @@
 package user;
 
+import java.util.List;
 import java.util.Scanner;
 
 import dao.AuthentificationDAO;
@@ -56,6 +57,7 @@ public class Test {
 			p = auth.verif(login, password);
 			if (p != null) {
 				System.out.println("Authentification a réussie !");
+				System.out.println("Bienvenu " + p.getNom());
 				// Prochain menu
 				metier = p.getMetier();
 				if (metier == 0)
@@ -76,11 +78,9 @@ public class Test {
 
 		while (choix != 0) {
 			System.out.println("Veuillez choisir une action :");
-			System.out.println("1) Ajouter un patient en file d'attente\n"
-							 + "2) Afficher la file d'attente\n"
-							 + "3) Afficher le prochain patient\n"
-							 + "4) Afficher les visites d'un patient\n"
-							 + "0) Quitter le menu");
+			System.out.println("1) Ajouter un patient en file d'attente\n" + "2) Afficher la file d'attente\n"
+					+ "3) Afficher le prochain patient\n" + "4) Afficher les visites d'un patient\n"
+					+ "0) Quitter le menu");
 			try {
 				choix = sc.nextInt();
 			} catch (Exception e) {
@@ -96,7 +96,7 @@ public class Test {
 				s.ajouterPatientFilleAttente(formulairePatient());
 				break;
 			case 2:
-				System.out.println(s.getFileAttente());
+				afficherListe(s.getFileAttente());
 				break;
 			case 3:
 				System.out.println(s.afficherProchainPatient());
@@ -104,7 +104,7 @@ public class Test {
 			case 4:
 				int idPatient = personneId("patient");
 				if (s.getListeVisites(idPatient).size() != 0)
-					System.out.println(s.getListeVisites(idPatient));
+					afficherListe(s.getListeVisites(idPatient));
 				else
 					System.out.println("Patient sans visites ou mauvais ID !");
 				break;
@@ -154,11 +154,8 @@ public class Test {
 
 		while (choix != 0) {
 			System.out.println("Veuillez choisir une action :");
-			System.out.println("1) Rendre la salle disponible\n"
-							 + "2) Afficher la file d'attente\n"
-							 + "3) Sauvegarder ses visites\n" 
-							 + "4) Afficher sa liste des visites\n" 
-							 + "0) Quitter le menu");
+			System.out.println("1) Rendre la salle disponible\n" + "2) Afficher la file d'attente\n"
+					+ "3) Sauvegarder ses visites\n" + "4) Afficher sa liste des visites\n" + "0) Quitter le menu");
 			try {
 				choix = sc.nextInt();
 			} catch (Exception e) {
@@ -173,14 +170,14 @@ public class Test {
 				m.salleDispo();
 				break;
 			case 2:
-				System.out.println(m.getFileAttente());
+				afficherListe(m.getFileAttente());
 				break;
 			case 3:
 				m.sauvegarderVisites();
 				break;
 			case 4:
 				if (m.getListeVisites().size() != 0)
-					System.out.println(m.getListeVisites());
+					afficherListe(m.getListeVisites());
 				else
 					System.out.println("Médecin sans visites !");
 				break;
@@ -191,6 +188,14 @@ public class Test {
 		}
 	}
 
+	static void afficherListe(List liste) {
+		for (Object o : liste) {
+			System.out.println(o);
+		}
+		System.out.println();
+
+	}
+
 	private static void menuAdmin(Personnel p) {
 		Administrateur a = new Administrateur(p.getLogin(), p.getPassword(), p.getNom(), p.getMetier());
 		Scanner sc = new Scanner(System.in);
@@ -198,14 +203,9 @@ public class Test {
 
 		while (choix != 0) {
 			System.out.println("Veuillez choisir une action :");
-			System.out.println("1) Supprimer un patient\n"
-							 + "2) Modifier un patient\n"
-							 + "3) Créer un nouveau patient\n"
-							 + "4) Créer un nouveau médecin\n"
-							 + "5) Supprimer un médecin\n"
-							 + "6) Créer un nouveau secrétaire\n"
-							 + "7) Supprimer un secrétaire\n"
-							 + "0) Quitter le menu");
+			System.out.println("1) Supprimer un patient\n" + "2) Modifier un patient\n"
+					+ "3) Créer un nouveau patient\n" + "4) Créer un nouveau médecin\n" + "5) Supprimer un médecin\n"
+					+ "6) Créer un nouveau secrétaire\n" + "7) Supprimer un secrétaire\n" + "0) Quitter le menu");
 			try {
 				choix = sc.nextInt();
 			} catch (Exception e) {
@@ -243,21 +243,21 @@ public class Test {
 			}
 		}
 	}
-	
+
 	private static int personneId(String cible) {
 		Scanner sc = new Scanner(System.in);
 		int id = -1;
-		
+
 		System.out.println("Veuillez entrer l'ID du " + cible + " :");
 		try {
 			id = sc.nextInt();
 		} catch (Exception e) {
 			System.out.println("Veuillez entrer un caratère numérique !");
 		}
-		
+
 		return id;
 	}
-	
+
 	private static Personnel formulairePersonnel() {
 		Scanner scInt = new Scanner(System.in);
 		Scanner scString = new Scanner(System.in);

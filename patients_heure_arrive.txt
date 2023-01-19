@@ -1,17 +1,8 @@
-Patient : toto titi arrivé a 2023/01/19 10:32:09
-Patient : dupond jean arrivé a 2023/01/19 10:32:09
-Patient : dupont jacques arrivé a 2023/01/19 10:32:09
-Patient : doe john arrivé a 2023/01/19 10:32:09
-Patient : delajungle georges arrivé a 2023/01/19 10:32:50
-Patient : toto titi arrivé a 2023/01/19 10:34:17
-Patient : dupond jean arrivé a 2023/01/19 10:34:17
-Patient : dupont jacques arrivé a 2023/01/19 10:34:17
-Patient : doe john arrivé a 2023/01/19 10:34:17
-Patient : toto titi arrivé a 2023/01/19 10:44:45
-Patient : dupond jean arrivé a 2023/01/19 10:44:45
-Patient : dupont jacques arrivé a 2023/01/19 10:44:45
-Patient : doe john arrivé a 2023/01/19 10:44:45
-Patient : toto titi arrivé a 2023/01/19 11:52:55
-Patient : dupond jean arrivé a 2023/01/19 11:52:55
-Patient : dupont jacques arrivé a 2023/01/19 11:52:55
-Patient : doe john arrivé a 2023/01/19 11:52:55
+Patient : toto titi arrivé le 19/01/2023 a 14:36:44
+Patient : dupond jean arrivé le 19/01/2023 a 14:36:44
+Patient : dupont jacques arrivé le 19/01/2023 a 14:36:44
+Patient : doe john arrivé le 19/01/2023 a 14:36:44
+Patient : toto titi arrivé le 19/01/2023 a 14:39:35
+Patient : dupond jean arrivé le 19/01/2023 a 14:39:35
+Patient : dupont jacques arrivé le 19/01/2023 a 14:39:35
+Patient : doe john arrivé le 19/01/2023 a 14:39:35
