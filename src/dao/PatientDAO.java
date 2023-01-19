@@ -57,6 +57,7 @@ public class PatientDAO {
 	}
 
 	public void updatePatient(int id, Patient patient) {
+
 		try {
 			PreparedStatement statement = connection.prepareStatement(
 					"UPDATE patients SET nom = ?, prenom = ?, age = ?, telephone = ?, adresse = ? WHERE id = ?");
@@ -74,10 +75,9 @@ public class PatientDAO {
 
 	public void deletePatient(int id) {
 		try {
-			PreparedStatement statement = connection.prepareStatement("delete FROM patients WHERE id = ?");
+			PreparedStatement statement = connection.prepareStatement("DELETE FROM patients WHERE id = ?");
 			statement.setInt(1, id);
-			ResultSet result = statement.executeQuery();
-
+			statement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
