@@ -15,3 +15,7 @@ Patient : toto titi arrivé a 2023/01/19 11:52:55
 Patient : dupond jean arrivé a 2023/01/19 11:52:55
 Patient : dupont jacques arrivé a 2023/01/19 11:52:55
 Patient : doe john arrivé a 2023/01/19 11:52:55
+Patient : toto titi arrivé a 2023/01/19 11:15:37
+Patient : dupond jean arrivé a 2023/01/19 11:15:37
+Patient : dupont jacques arrivé a 2023/01/19 11:15:37
+Patient : doe john arrivé a 2023/01/19 11:15:37
